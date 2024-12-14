@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage {
 
@@ -14,6 +16,8 @@ public class ProductsPage extends BasePage {
     }
 
     public String getTitle() {
+        //Timeout Exception
+        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE));
         return driver.findElement(TITLE).getText();
     }
 

@@ -10,17 +10,17 @@ import static org.testng.Assert.assertEquals;
 
 public class CartTest extends BaseTest {
 
-    @Test(testName = "Add 1 product to Cart and navigate to Cart", priority = 1)
+    @Test(testName = "Add 1 product", description = "Add 1 product to Cart and navigate to Cart", priority = 2)
     public void checkAddingOfOneProductToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddButton("Sauce Labs Onesie");
-        productsPage.clickShoppingCart();
+        cartPage.open();
         String productInCart = driver.findElement(By.cssSelector(".inventory_item_name")).getText();
         assertEquals(productInCart, "Sauce Labs Onesie", "(!) Product names are different");
     }
 
-    @Test(testName = "Return from Cart to 'Products' page via 'Continue Shopping' button", priority = 2)
+    @Test(testName = "Return to 'Products' page", description = "Return from Cart to 'Products' page via 'Continue Shopping' button", priority = 5)
     public void checkReturnToProductsPageFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -31,7 +31,7 @@ public class CartTest extends BaseTest {
         assertEquals(openedPageAfterClick, "Products", "(!) Page 'Products' isn't opened");
     }
 
-    @Test(testName = "Proceed to checkout via 'Checkout button'", priority = 3)
+    @Test(testName = "Proceed to Checkout", description = "Proceed to Checkout via 'Checkout' button", priority = 3)
     public void checkProceedToCheckoutFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -42,7 +42,7 @@ public class CartTest extends BaseTest {
         assertEquals(openedCheckoutPage, "Checkout: Your Information", "(!) Page 'Checkout' isn't opened");
     }
 
-    @Test(testName = "Return from 'Checkout' to Cart", priority = 4)
+    @Test(testName = "Return to Cart", description = "Return from 'Checkout' to Cart", priority = 4)
     public void checkReturnToCartFromCheckoutPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -54,7 +54,7 @@ public class CartTest extends BaseTest {
         assertEquals(openedCartPage, "Your Cart", "(!) Page 'Cart' isn't opened");
     }
 
-    @Test(testName = "Refresh the Cart and check that added product is still present in cart", priority = 5)
+    @Test(testName = "Refresh Cart", description = "Refresh the Cart and check that added product is still present in cart", priority = 7)
     public void checkRefreshingCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -65,7 +65,7 @@ public class CartTest extends BaseTest {
         assertEquals(productInCart, "Sauce Labs Onesie", "(!) Product names are different");
     }
 
-    @Test(testName = "Add 1 product to Cart and remove it", priority = 6)
+    @Test(testName = "Remove 1 product", description = "Add 1 product to Cart and remove it", priority = 6)
     public void checkAddingOneProductToCartAndRemoving() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -88,7 +88,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Add 2 products to Cart and remove two products", priority = 7)
+    @Test(testName = "Remove 2 products", description = "Add 2 products to Cart and remove two products", priority = 8)
     public void checkAddingTwoProductsToCartAndRemovingBoth() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -116,7 +116,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check elements of empty Cart", priority = 8)
+    @Test(testName = "Check empty Cart", description = "Check elements of empty Cart", priority = 1)
     public void checkElementsOfEmptyCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -131,7 +131,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check prices of all products in Cart", priority = 9)
+    @Test(testName = "Check prices", description = "Check prices of all products in Cart", priority = 10)
     public void checkPricesOfAllProductsInCart() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -171,7 +171,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check descriptions of all products in Cart", priority = 10)
+    @Test(testName = "Check descriptions" , description = "Check descriptions of all products in Cart", priority = 9)
     public void checkDescriptionsOfAllProductsInCart() {
         HashMap<String, String> productNamesAndDescriptions = getStringStringHashMap();
         loginPage.open();

@@ -18,6 +18,10 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    public void open() {
+        driver.get(BASE_URL + "cart.html");
+    }
+
     //CHECK THE LABELS
     public String getCartTitle() {
         return driver.findElement(CART_TITLE_LABEL).getText();

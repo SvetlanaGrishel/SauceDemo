@@ -8,7 +8,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
-    @Test(testName = "Проверка позитивного логина", description = "Проверка позитивного логина")
+    @Test(testName = "Check positive login", description = "Check positive login for standard user", priority = 1)
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
                 "Переход на страницу не выполнен");
     }
 
-    @Test(priority = 3)
+    @Test(testName = "Check login with empty username", description = "Login with empty username and check error message", priority = 3)
     public void checkLoginWithEmptyUserName() {
         loginPage.open();
         loginPage.login("", "secret_sauce");
@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
                 "Сообщение об ошибке не верное");
     }
 
-    @Test(priority = 2)
+    @Test(testName = "Check login with empty password", description = "Login with empty password and check error message", priority = 4)
     public void checkLoginWithEmptyPassword() {
         loginPage.open();
         loginPage.login("standard_user", "");
@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest {
                 "FAIL checkLoginWithEmptyPassword");
     }
 
-    @Test
+    @Test(testName = "Check login with not valid password", description = "Login with not valid password and check error message", priority = 5)
     public void checkNotValidPassword() {
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
@@ -57,8 +57,9 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test (dataProvider = "loginData")
-    public void test(String user, String password, String expectedError) {
+    @Test (dataProvider = "loginData", testName = "Test with dataProvider",
+            description = "Check error messages using dataProvider", priority = 2)
+    public void testWithDataProvider(String user, String password, String expectedError) {
         loginPage.open();
         loginPage.login(user, password);
         assertEquals(loginPage.getErrorMessage(),
