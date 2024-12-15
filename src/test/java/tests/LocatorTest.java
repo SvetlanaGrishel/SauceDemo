@@ -1,9 +1,11 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class LocatorTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Check locators", description = "Check locators of different types")
     public void locatorTest() {
         //general locators
         driver.get("https://www.saucedemo.com");
