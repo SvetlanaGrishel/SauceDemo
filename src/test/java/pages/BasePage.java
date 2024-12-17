@@ -16,6 +16,4 @@ public abstract class BasePage {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
-
-
 }

@@ -5,7 +5,7 @@
         <listener class-name="tests.TestListener"/>
         <listener class-name="tests.AnnotationTransformer"/>
     </listeners>
-    <test name="Thread#1">
+    <test name="Thread#chrome">
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.CartTest"/>
@@ -13,7 +13,7 @@
             <parameter name="browser" value="chrome"></parameter>
         </classes>
     </test> <!-- Test -->
-    <test name="Thread#2">
+    <test name="Thread#edge">
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.CartTest"/>
@@ -21,7 +21,7 @@
             <parameter name="browser" value="edge"></parameter>
         </classes>
     </test> <!-- Test -->
-    <test name="Thread#3">
+    <test name="Thread#firefox">
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.CartTest"/>

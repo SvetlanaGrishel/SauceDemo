@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -10,7 +14,10 @@ import static org.testng.Assert.assertEquals;
 
 public class CartTest extends BaseTest {
 
-    @Test(testName = "Add 1 product", description = "Add 1 product to Cart and navigate to Cart", priority = 2)
+    @Test(testName = "Add 1 product", description = "Add 1 product to Cart and navigate to Cart", priority = 1)
+    @Description("Add 1 product to Cart and navigate to Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkAddingOfOneProductToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -20,7 +27,10 @@ public class CartTest extends BaseTest {
         assertEquals(productInCart, "Sauce Labs Onesie", "(!) Product names are different");
     }
 
-    @Test(testName = "Return to 'Products' page", description = "Return from Cart to 'Products' page via 'Continue Shopping' button", priority = 5)
+    @Test(testName = "Return to 'Products' page", description = "Return from Cart to 'Products' page via 'Continue Shopping' button", priority = 2)
+    @Description("Return from Cart to 'Products' page via 'Continue Shopping' button")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.NORMAL)
     public void checkReturnToProductsPageFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -32,6 +42,9 @@ public class CartTest extends BaseTest {
     }
 
     @Test(testName = "Proceed to Checkout", description = "Proceed to Checkout via 'Checkout' button", priority = 3)
+    @Description("Proceed to Checkout via 'Checkout' button")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkProceedToCheckoutFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -43,6 +56,9 @@ public class CartTest extends BaseTest {
     }
 
     @Test(testName = "Return to Cart", description = "Return from 'Checkout' to Cart", priority = 4)
+    @Description("Return from 'Checkout' to Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.NORMAL)
     public void checkReturnToCartFromCheckoutPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -54,7 +70,10 @@ public class CartTest extends BaseTest {
         assertEquals(openedCartPage, "Your Cart", "(!) Page 'Cart' isn't opened");
     }
 
-    @Test(testName = "Refresh Cart", description = "Refresh the Cart and check that added product is still present in cart", priority = 7)
+    @Test(testName = "Refresh Cart", description = "Refresh the Cart and check that added product is still present in Cart", priority = 5)
+    @Description("Refresh the Cart and check that added product is still present in Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.TRIVIAL)
     public void checkRefreshingCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -66,6 +85,9 @@ public class CartTest extends BaseTest {
     }
 
     @Test(testName = "Remove 1 product", description = "Add 1 product to Cart and remove it", priority = 6)
+    @Description("Add 1 product to Cart and remove it")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkAddingOneProductToCartAndRemoving() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -88,7 +110,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Remove 2 products", description = "Add 2 products to Cart and remove two products", priority = 8)
+    @Test(testName = "Remove 2 products", description = "Add 2 products to Cart and remove two products", priority = 7)
+    @Description("Add 2 products to Cart and remove two products")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.NORMAL)
     public void checkAddingTwoProductsToCartAndRemovingBoth() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -116,7 +141,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check empty Cart", description = "Check elements of empty Cart", priority = 1)
+    @Test(testName = "Check empty Cart", description = "Check elements of empty Cart", priority = 8)
+    @Description("Check elements of empty Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.TRIVIAL)
     public void checkElementsOfEmptyCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -131,7 +159,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check prices", description = "Check prices of all products in Cart", priority = 10)
+    @Test(testName = "Check prices", description = "Check prices of all products in Cart", priority = 9)
+    @Description("Check prices of all products in Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkPricesOfAllProductsInCart() {
         HashMap<String, String> productNamesAndPrices = new HashMap<>();
         productNamesAndPrices.put("Sauce Labs Backpack", "$29.99");
@@ -171,7 +202,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check descriptions" , description = "Check descriptions of all products in Cart", priority = 9)
+    @Test(testName = "Check descriptions" , description = "Check descriptions of all products in Cart", priority = 10)
+    @Description("Check descriptions of all products in Cart")
+    @Epic("Shopping Cart module SauceDemo")
+    @Severity(SeverityLevel.NORMAL)
     public void checkDescriptionsOfAllProductsInCart() {
         HashMap<String, String> productNamesAndDescriptions = getStringStringHashMap();
         loginPage.open();
