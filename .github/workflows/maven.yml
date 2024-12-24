@@ -14,10 +14,14 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  USERNAME: ${{secrets.SD_USER}}
+  PASSWORD: ${{secrets.SD_PASSWORD}}
+
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -27,20 +31,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: setup browser firefox
-      uses: abhi1693/setup-browser@v0.3.4
-      with:
-        browser: firefox
-        version: latest
     - name: setup browser chrome
       uses: abhi1693/setup-browser@v0.3.4
       with:
         browser: chrome
         version: latest
-    - name: setup browser edge
-      uses: abhi1693/setup-browser@v0.3.4
-      with:
-        browser: edge
-        version: latest
     - name: Run tests
-      run: mvn clean test -DsuiteXmlFile='src/test/resources/CrossBrowser.xml'
+      run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD

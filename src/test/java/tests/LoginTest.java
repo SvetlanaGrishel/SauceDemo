@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
     @Description("Check positive login with standard credentials")
     public void checkLogin() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         assertEquals(
                 productsPage.getTitle(),
                 "Products",
@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void checkLoginWithEmptyUserName() {
         loginPage.open();
-        loginPage.login("", "secret_sauce");
+        loginPage.login("", password);
         assertEquals(
                 loginPage.getErrorMessage(),
                 "Epic sadface: Username is required",
@@ -47,7 +47,7 @@ public class LoginTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void checkLoginWithEmptyPassword() {
         loginPage.open();
-        loginPage.login("standard_user", "");
+        loginPage.login(user, "");
         assertEquals(loginPage.getErrorMessage(),
                 "Epic sadface: Password is required",
                 "FAIL checkLoginWithEmptyPassword");
