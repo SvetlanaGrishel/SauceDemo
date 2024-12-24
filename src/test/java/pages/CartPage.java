@@ -41,13 +41,13 @@ public class CartPage extends BasePage {
     }
 
     //CHECK ADDED PRODUCTS DETAILS
-    @Step("Get the product descriptions in Cart")
+    @Step("Get the '{product}' descriptions in Cart")
     public String getProductDescription(String product) {
         By productDescription = By.xpath(String.format(DESCRIPTION_PATTERN, product));
         return driver.findElement(productDescription).getText();
     }
 
-    @Step("Get the product prices in Cart")
+    @Step("Get the '{product}' prices in Cart")
     public String getProductPrice(String product) {
         By productPrice = By.xpath(String.format(PRICE_PATTERN, product));
         return driver.findElement(productPrice).getText();
@@ -64,7 +64,7 @@ public class CartPage extends BasePage {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
-    @Step("Remove product from Cart")
+    @Step("Remove the '{product}' from Cart")
     public void clickRemove(String product) {
         By removingProduct = By.xpath(String.format(REMOVE_BUTTON_PATTERN, product));
         driver.findElement(removingProduct).click();
