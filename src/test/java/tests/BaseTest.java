@@ -30,17 +30,20 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod
     @Step("Open browser {browser}")
-    public void setup(@Optional("chrome")String browser, ITestContext context) {
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("headless");
             options.addArguments("start-maximized");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
+            edgeOptions.addArguments("headless");
             edgeOptions.addArguments("start-maximized");
             driver = new EdgeDriver(edgeOptions);
         } else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.addArguments("headless");
             firefoxOptions.addArguments("start-maximized");
             driver = new FirefoxDriver(firefoxOptions);
         }
@@ -57,6 +60,8 @@ public class BaseTest {
         if (ITestResult.FAILURE == result.getStatus()) {
             takeScreenshot(driver);
         }
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
