@@ -37,18 +37,33 @@ public class BaseTest {
     public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("headless");
-            options.addArguments("start-maximized");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--headless");
+            options.addArguments("--start-maximized");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
-            edgeOptions.addArguments("headless");
-            edgeOptions.addArguments("start-maximized");
+            edgeOptions.addArguments("--no-sandbox");
+            edgeOptions.addArguments("--disable-dev-shm-usage");
+            edgeOptions.addArguments("--disable-gpu");
+            edgeOptions.addArguments("--disable-extensions");
+            edgeOptions.addArguments("--remote-allow-origins=*");
+            edgeOptions.addArguments("--headless");
+            edgeOptions.addArguments("--start-maximized");
             driver = new EdgeDriver(edgeOptions);
         } else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addArguments("headless");
-            firefoxOptions.addArguments("start-maximized");
+            firefoxOptions.addArguments("--no-sandbox");
+            firefoxOptions.addArguments("--disable-dev-shm-usage");
+            firefoxOptions.addArguments("--disable-gpu");
+            firefoxOptions.addArguments("--disable-extensions");
+            firefoxOptions.addArguments("--remote-allow-origins=*");
+            firefoxOptions.addArguments("--headless");
+            firefoxOptions.addArguments("--start-maximized");
             driver = new FirefoxDriver(firefoxOptions);
         }
 
